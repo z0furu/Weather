@@ -4,17 +4,17 @@ import com.luguanyu.data.model.Weather;
 
 import java.util.List;
 
-/**
- * Created by luguanyu on 2018/1/3.
- */
 
 public interface MainContract {
 
     interface Presenter {
+        void getDaily();
         void getWeather();
+        void deleteWeather(Weather weather);
     }
 
     interface View {
+        void showDaily(String title, String author);
         void showWeather(List<Weather> weatherList);
         void showError();
         void showProgress();

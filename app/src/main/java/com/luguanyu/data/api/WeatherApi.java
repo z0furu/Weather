@@ -1,9 +1,12 @@
 package com.luguanyu.data.api;
 
+import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.luguanyu.data.api.listener.OnWeatherListener;
+import com.luguanyu.data.database.AppDatabase;
 import com.luguanyu.data.model.Weather;
 import com.luguanyu.data.parser.ParserWeather;
 import com.prof.rssparser.Article;
@@ -39,7 +42,7 @@ public class WeatherApi {
     }
 
 
-    public void getWeather(@NonNull final OnWeatherListener onWeatherListener) {
+    public void getWeather(final Context mContext, @NonNull final OnWeatherListener onWeatherListener) {
         Parser parser = new Parser();
         parser.execute(URL);
         parser.onFinish(new Parser.OnTaskCompleted() {
@@ -49,6 +52,12 @@ public class WeatherApi {
                     Log.i(TAG, "onTaskCompleted: " + list.get(i).toString());
                     if (list.get(i).getTitle().contains("一週天氣預報")) {
                         List<Weather> weatherList = ParserWeather.parser(list.get(i));
+                        AppDatabase database = Room.databaseBuilder(mContext, AppDatabase.class, "Weather").allowMainThreadQueries().build();
+                        database.weatherDao().deleteAll();
+                        for (Weather weather : weatherList) {
+                            database.weatherDao().insert(weather);
+                            Log.i(TAG, "onTaskCompleted: insert" );
+                        }
                         onWeatherListener.onWeatherSuccess(weatherList);
                         return;
                     }

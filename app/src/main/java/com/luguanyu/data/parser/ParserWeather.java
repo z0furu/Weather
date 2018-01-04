@@ -20,18 +20,20 @@ public class ParserWeather {
     public static List<Weather> parser(Article article) {
         List<Weather> weatherList = new ArrayList<>();
         String[] brSplit = article.getDescription().split("<BR>");
-        for (String strWeather: brSplit) {
-            String[] content = strWeather.split(" ");
+
+        for (int i = 0; i < brSplit.length; i++) {
+            String[] content = brSplit[i].split(" ");
             if (content.length < 4) break;
 
             Weather weather = new Weather();
+            weather.setUid(i);
             weather.setDate(content[0].trim());
             weather.setAMPM(content[1]);
             weather.setTemperature(content[2] + content[3] + content[4]);
             weather.setStatus(content[5]);
             weatherList.add(weather);
-
         }
+
         return weatherList;
     }
 }
