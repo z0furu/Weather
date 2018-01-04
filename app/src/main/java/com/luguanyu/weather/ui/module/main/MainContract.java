@@ -11,6 +11,7 @@ public interface MainContract {
         void getDaily();
         void getWeather();
         void deleteWeather(Weather weather);
+        void insertWeather(Weather weather);
     }
 
     interface View {

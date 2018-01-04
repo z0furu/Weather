@@ -65,6 +65,11 @@ public class MainPresenter implements MainContract.Presenter, OnWeatherListener 
     }
 
     @Override
+    public void insertWeather(Weather weather) {
+        database.weatherDao().insert(weather);
+    }
+
+    @Override
     public void onWeatherSuccess(List<Weather> weatherList) {
         mainView.showWeather(database.weatherDao().getAllWeather());
         mainView.dismissProgress();
