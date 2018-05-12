@@ -1,10 +1,10 @@
-package com.luguanyu.data.database;
+package com.example.mydatabase;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.RoomDatabase;
 
-import com.luguanyu.data.dao.WeatherDao;
-import com.luguanyu.data.model.Weather;
+import com.example.mydatabase.dao.WeatherDao;
+import com.example.mydatabase.model.Weather;
 
 /**
  * Created by luguanyu on 2018/1/3.

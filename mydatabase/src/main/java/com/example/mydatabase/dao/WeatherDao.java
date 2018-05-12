@@ -1,12 +1,11 @@
-package com.luguanyu.data.dao;
+package com.example.mydatabase.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
-import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import com.luguanyu.data.model.Weather;
+import com.example.mydatabase.model.Weather;
 
 import java.util.List;
 

@@ -4,9 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MVVMAPP/MVVMAPP.iml" filepath="$PROJECT_DIR$/MVVMAPP/MVVMAPP.iml" />
       <module fileurl="file://$PROJECT_DIR$/Weather.iml" filepath="$PROJECT_DIR$/Weather.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Weather.iml" filepath="$PROJECT_DIR$/Weather.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mydatabase/mydatabase.iml" filepath="$PROJECT_DIR$/mydatabase/mydatabase.iml" />
     </modules>
   </component>
 </project>

@@ -1,4 +1,4 @@
-package com.luguanyu.data.model;
+package com.example.mydatabase.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;

@@ -6,9 +6,6 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.luguanyu.data.api.listener.OnWeatherListener;
-import com.luguanyu.data.database.AppDatabase;
-import com.luguanyu.data.model.Weather;
-import com.luguanyu.data.parser.ParserWeather;
 import com.prof.rssparser.Article;
 import com.prof.rssparser.Parser;
 
@@ -50,17 +47,17 @@ public class WeatherApi {
             public void onTaskCompleted(ArrayList<Article> list) {
                 for (int i = 0; i < list.size(); i++) {
                     Log.i(TAG, "onTaskCompleted: " + list.get(i).toString());
-                    if (list.get(i).getTitle().contains("一週天氣預報")) {
-                        List<Weather> weatherList = ParserWeather.parser(list.get(i));
-                        AppDatabase database = Room.databaseBuilder(mContext, AppDatabase.class, "Weather").allowMainThreadQueries().build();
-                        database.weatherDao().deleteAll();
-                        for (Weather weather : weatherList) {
-                            database.weatherDao().insert(weather);
-                            Log.i(TAG, "onTaskCompleted: insert" );
-                        }
-                        onWeatherListener.onWeatherSuccess(weatherList);
-                        return;
-                    }
+//                    if (list.get(i).getTitle().contains("一週天氣預報")) {
+//                        List<Weather> weatherList = ParserWeather.parser(list.get(i));
+//                        AppDatabase database = Room.databaseBuilder(mContext, AppDatabase.class, "Weather").allowMainThreadQueries().build();
+//                        database.weatherDao().deleteAll();
+//                        for (Weather weather : weatherList) {
+//                            database.weatherDao().insert(weather);
+//                            Log.i(TAG, "onTaskCompleted: insert" );
+//                        }
+//                        onWeatherListener.onWeatherSuccess(weatherList);
+//                        return;
+//                    }
 
                 }
             }
