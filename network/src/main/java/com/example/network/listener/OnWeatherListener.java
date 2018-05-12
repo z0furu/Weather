@@ -1,6 +1,6 @@
-package com.luguanyu.data.api.listener;
+package com.example.network.listener;
 
-import com.luguanyu.data.model.Weather;
+import com.prof.rssparser.Article;
 
 import java.util.List;
 
@@ -9,6 +9,6 @@ import java.util.List;
  */
 
 public interface OnWeatherListener {
-    void onWeatherSuccess(List<Weather> weatherList);
+    void onWeatherSuccess(List<Article> weatherList);
     void onWeatherError();
 }

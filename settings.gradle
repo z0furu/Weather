@@ -1,1 +1,1 @@
-include ':app', ':MVVMAPP', ':mydatabase'
+include ':app', ':MVVMAPP', ':mydatabase', ':network'

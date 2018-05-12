@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/MVVMAPP" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/mydatabase" />
+            <option value="$PROJECT_DIR$/network" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

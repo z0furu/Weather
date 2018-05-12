@@ -1,16 +1,14 @@
-package com.luguanyu.data.api;
+package com.example.network.api;
 
-import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
-import com.luguanyu.data.api.listener.OnWeatherListener;
+import com.example.network.listener.OnWeatherListener;
 import com.prof.rssparser.Article;
 import com.prof.rssparser.Parser;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by luguanyu on 2018/1/3.
