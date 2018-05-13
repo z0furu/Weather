@@ -15,7 +15,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.luguanyu.data.model.Weather;
+import com.example.mydatabase.MyDatabaseManager;
+import com.example.mydatabase.model.Weather;
+import com.example.network.api.WeatherApi;
 import com.luguanyu.weather.R;
 import com.luguanyu.weather.ui.adapter.WeatherAdapter;
 import com.luguanyu.weather.ui.adapter.WeatherItemTouchHelperCallback;
@@ -44,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         setContentView(R.layout.activity_main);
 
         initView();
-        mainPresenter = new MainPresenter(this, this);
+        mainPresenter = new MainPresenter(this, WeatherApi.getInstance(), MyDatabaseManager.getInstance(this));
         mainPresenter.getWeather();
         new Thread(new Runnable() {
             @Override

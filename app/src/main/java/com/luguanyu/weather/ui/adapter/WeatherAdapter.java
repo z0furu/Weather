@@ -8,9 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.luguanyu.data.model.Weather;
+import com.example.mydatabase.model.Weather;
 import com.luguanyu.weather.R;
-import com.luguanyu.weather.ui.listener.OnSwipeListener;
 
 import java.util.List;
 

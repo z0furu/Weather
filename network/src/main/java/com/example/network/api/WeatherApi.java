@@ -1,13 +1,18 @@
 package com.example.network.api;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.example.network.listener.OnTitleListener;
 import com.example.network.listener.OnWeatherListener;
 import com.prof.rssparser.Article;
 import com.prof.rssparser.Parser;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
+
+import java.net.URL;
 import java.util.ArrayList;
 
 /**
@@ -37,7 +42,7 @@ public class WeatherApi {
     }
 
 
-    public void getWeather(final Context mContext, @NonNull final OnWeatherListener onWeatherListener) {
+    public void getWeather(@NonNull final OnWeatherListener onWeatherListener) {
         Parser parser = new Parser();
         parser.execute(URL);
         parser.onFinish(new Parser.OnTaskCompleted() {
@@ -45,18 +50,11 @@ public class WeatherApi {
             public void onTaskCompleted(ArrayList<Article> list) {
                 for (int i = 0; i < list.size(); i++) {
                     Log.i(TAG, "onTaskCompleted: " + list.get(i).toString());
-//                    if (list.get(i).getTitle().contains("一週天氣預報")) {
-//                        List<Weather> weatherList = ParserWeather.parser(list.get(i));
-//                        AppDatabase database = Room.databaseBuilder(mContext, AppDatabase.class, "Weather").allowMainThreadQueries().build();
-//                        database.weatherDao().deleteAll();
-//                        for (Weather weather : weatherList) {
-//                            database.weatherDao().insert(weather);
-//                            Log.i(TAG, "onTaskCompleted: insert" );
-//                        }
-//                        onWeatherListener.onWeatherSuccess(weatherList);
-//                        return;
-//                    }
-
+                    Article article = list.get(i);
+                    if (article.getTitle().contains("一週天氣預報")) {
+                        onWeatherListener.onWeatherSuccess(article.getDescription().split("<BR>"));
+                        return;
+                    }
                 }
             }
 
@@ -67,6 +65,21 @@ public class WeatherApi {
         });
     }
 
+    public void getTitle(@NonNull OnTitleListener onTitleListener) {
+        try {
+            java.net.URL url = new URL("http://www.appledaily.com.tw/index/dailyquote/");
 
+            Document document = Jsoup.parse(url, 30000);
+            Elements articleElements = document.select("article[class=dphs]");
+            Elements dailyElements = articleElements.get(0).select("p");
+
+            Elements authorElements = articleElements.get(0).select("h1");
+
+            onTitleListener.onTitle(dailyElements.get(0).text(), authorElements.get(0).text());
+        } catch (Exception e) {
+            e.printStackTrace();
+            onTitleListener.onFailed();
+        }
+    }
 
 }

@@ -2,8 +2,8 @@ package com.luguanyu.data.parser;
 
 import android.util.Log;
 
-import com.luguanyu.data.model.Weather;
-import com.prof.rssparser.Article;
+
+import com.example.mydatabase.model.Weather;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,11 @@ public class ParserWeather {
 
     private static final String TAG = "ParserWeather";
 
-    public static List<Weather> parser(Article article) {
+    public static List<Weather> parser(String[] descriptions) {
         List<Weather> weatherList = new ArrayList<>();
-        String[] brSplit = article.getDescription().split("<BR>");
 
-        for (int i = 0; i < brSplit.length; i++) {
-            String[] content = brSplit[i].split(" ");
+        for (int i = 0; i < descriptions.length; i++) {
+            String[] content = descriptions[i].split(" ");
             if (content.length < 4) break;
 
             Weather weather = new Weather();

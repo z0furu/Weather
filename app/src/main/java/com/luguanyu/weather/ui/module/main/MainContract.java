@@ -1,6 +1,8 @@
 package com.luguanyu.weather.ui.module.main;
 
-import com.luguanyu.data.model.Weather;
+
+import com.example.mydatabase.model.Weather;
+import com.example.network.api.WeatherApi;
 
 import java.util.List;
 

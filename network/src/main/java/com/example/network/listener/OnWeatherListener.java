@@ -9,6 +9,6 @@ import java.util.List;
  */
 
 public interface OnWeatherListener {
-    void onWeatherSuccess(List<Article> weatherList);
+    void onWeatherSuccess(String[] descriptions);
     void onWeatherError();
 }
